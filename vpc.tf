@@ -9,7 +9,7 @@
 resource "aws_vpc" "demo" {
   cidr_block = "10.0.0.0/16"
 
-  tags = map(
+  tags = tomap(
     "Name", "terraform-eks-demo-node",
     "kubernetes.io/cluster/${var.cluster-name}", "shared",
   )
@@ -23,7 +23,7 @@ resource "aws_subnet" "demo" {
   vpc_id            = aws_vpc.demo.id
   map_public_ip_on_launch = true
 
-  tags = map(
+  tags = tomap(
     "Name", "terraform-eks-demo-node",
     "kubernetes.io/cluster/${var.cluster-name}", "shared",
   )
