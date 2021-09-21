@@ -46,7 +46,7 @@ pipeline {
                 terraform workspace select eks-demo
 					terraform plan \
 					-var cluster-name=${params.cluster} \
-						-out ${plan} -lock=false
+						-out ${plan} 
             #    terraform plan -var cluster-name=${params.cluster}  -lock=false
 					echo ${params.cluster}
 				"""
