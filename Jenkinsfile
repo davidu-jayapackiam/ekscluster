@@ -39,7 +39,8 @@ pipeline {
 			dir('.') {
 				withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'AWS_Credentials', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
 				sh """
-					terraform init -reconfigure
+					#terraform init -reconfigure
+					terraform init
 				 #terraform workspace new ${params.cluster} || true
                 terraform workspace new demo-aspire
 					terraform workspace select ${params.cluster}
