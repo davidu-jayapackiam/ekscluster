@@ -71,7 +71,7 @@ pipeline {
 				"""
 				sh 'sudo chown $(id -u):$(id -g) $HOME/.kube/config'
 				sleep 30
-				sh 'kubectl get nodes'
+				sh '$(which kubectl) kubectl get nodes'
 				}
 			}
         }
