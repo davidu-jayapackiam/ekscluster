@@ -91,7 +91,7 @@ pipeline {
 				withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'AWS_Credentials', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
 				sh """
 			#	terraform workspace select ${params.cluster}
-            terraform workspace select eks-demo
+            terraform workspace select demo-aspire
 				terraform destroy -auto-approve
 				"""
 				}
