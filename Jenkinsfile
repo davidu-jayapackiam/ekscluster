@@ -40,11 +40,13 @@ pipeline {
 				withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'AWS_Credentials', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
 				sh """
 					terraform init
-				 terraform workspace new ${params.cluster} || true
-					terraform workspace select ${params.cluster}
+				# terraform workspace new ${params.cluster} || true
+                terraform workspace new demo
+				#	terraform workspace select ${params.cluster}
+                terraform workspace select demo
 					terraform plan \
 						-var cluster-name=${params.cluster} \
-						-out ${plan}
+						-out ${plan} -lock=false
 					echo ${params.cluster}
 				"""
 				}
@@ -86,7 +88,8 @@ pipeline {
 			dir('.') {
 				withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'AWS_Credentials', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
 				sh """
-				terraform workspace select ${params.cluster}
+			#	terraform workspace select ${params.cluster}
+            terraform workspace select demo
 				terraform destroy -auto-approve
 				"""
 				}
