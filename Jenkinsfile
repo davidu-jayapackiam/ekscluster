@@ -41,9 +41,9 @@ pipeline {
 				sh """
 					terraform init -reconfigure
 				# terraform workspace new ${params.cluster} || true
-                terraform workspace new eks-demo
+                terraform workspace new demo
 				#	terraform workspace select ${params.cluster}
-                terraform workspace select eks-demo
+                terraform workspace select demo
 					terraform plan \
 					-var cluster-name=${params.cluster} \
 						-out ${plan} 
