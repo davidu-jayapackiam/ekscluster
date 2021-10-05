@@ -8,7 +8,7 @@ pipeline {
   agent any
   
   stages {
-   stage("Clean"){
+   stage('Clean'){
      steps { 
        script {  
             deleteDir()   
