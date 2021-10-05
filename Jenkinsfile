@@ -6,8 +6,17 @@ pipeline {
   }
   
   agent any
-
+  
   stages {
+  stage("Clean")
+   {
+     steps{ 
+       script{  
+            deleteDir()   
+            echo "Emptied directory before clone..."  
+             }
+           }
+    }	  
     stage('checkout') {
         steps {
             git 'https://github.com/chavaliInfy/ekscluster.git'
