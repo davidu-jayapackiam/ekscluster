@@ -9,8 +9,8 @@ pipeline {
   
   stages {
    stage("Clean"){
-     steps{ 
-       script{  
+     steps { 
+       script {  
             deleteDir()   
             echo "Emptied directory before clone..."  
              }
