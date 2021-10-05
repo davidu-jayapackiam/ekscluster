@@ -10,7 +10,7 @@ pipeline {
   stages {
     stage('checkout') {
         steps {
-            git 'https://github.com/Prasad459/ekscluster.git'
+            git 'https://github.com/chavaliInfy/ekscluster.git'
         }
     }
 	stage('Setup') {
