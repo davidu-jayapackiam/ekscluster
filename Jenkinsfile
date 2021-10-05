@@ -42,8 +42,8 @@ pipeline {
 			         //       withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'cred-dev-ecr-jenkins-eks-new', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) { 
 	
 					sh """
-					#terraform init -reconfigure
-					terraform init
+					terraform init -reconfigure
+					#terraform init
 				 #terraform workspace new ${params.cluster} || true
                 terraform workspace new demo-aspire
 					terraform workspace select ${params.cluster}
