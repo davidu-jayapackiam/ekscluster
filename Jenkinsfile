@@ -8,15 +8,7 @@ pipeline {
   agent any
   
   stages {
-	  stage('Clean'){
-            steps { 
-       script {  
-            deleteDir()   
-            echo "Emptied directory before clone..."  
-             }
-           }
-    }
-    stage('checkout') {
+     stage('checkout') {
         steps {
             git 'https://github.com/chavaliInfy/ekscluster.git'
         }
@@ -52,10 +44,10 @@ pipeline {
 					sh """
 					terraform init -reconfigure
 					#terraform init
-				 #terraform workspace new ${params.cluster} || true
-                terraform workspace new demo-aspire1
+				 terraform workspace new ${params.cluster} || true
+                #terraform workspace new demo-aspire2
 					terraform workspace select ${params.cluster}
-                terraform workspace select demo-aspire1
+                #terraform workspace select demo-aspire2
 					terraform plan \
 					-var cluster-name=${params.cluster} \
 						-out ${plan} 
@@ -101,8 +93,8 @@ pipeline {
 			dir('.') {
 				withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'AWS_Credentials', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
 				sh """
-			#	terraform workspace select ${params.cluster}
-            terraform workspace select demo-aspire1
+				terraform workspace select ${params.cluster}
+            # terraform workspace select demo-aspire1
 				terraform destroy -auto-approve
 				"""
 				}
