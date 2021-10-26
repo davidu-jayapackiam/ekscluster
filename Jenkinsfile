@@ -66,7 +66,7 @@ pipeline {
 		steps {
 			script {
 			dir('.') {
-				withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'cred-dev-ecr-jenkins-eks-newt', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+				withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'cred-dev-ecr-jenkins-eks-new', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
 				if (fileExists('$HOME/.kube')) {
 					echo '.kube Directory Exists'
 				} else {
@@ -91,7 +91,7 @@ pipeline {
       steps {
         script {
 			dir('.') {
-				withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'test', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+				withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'cred-dev-ecr-jenkins-eks-new', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
 				sh """
 				terraform workspace select ${params.cluster}
             # terraform workspace select demo-aspire1
