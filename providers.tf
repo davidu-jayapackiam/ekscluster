@@ -5,7 +5,7 @@
 provider "aws" {
   region  = "us-east-2"
  // version = ">= 2.38.0"
-  version = ">= 2.38.0"  
+  version = ">= 2.0"  
 }
 
 # Using these data sources allows the configuration to be
