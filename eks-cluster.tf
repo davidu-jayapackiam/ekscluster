@@ -5,8 +5,8 @@
 #  * EKS Cluster
 #
 
-resource "aws_iam_role" "demo-cluster" {
-  name = "terraform-eks-demo-cluster"
+resource "aws_iam_role" "demo-clusternew" {
+  name = "terraform-eks-demo-clusternew"
 
   assume_role_policy = <<POLICY
 {
