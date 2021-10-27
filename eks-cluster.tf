@@ -5,8 +5,7 @@
 #  * EKS Cluster
 #
 
-#resource "aws_iam_role" "demo-cluster" {
-resource "aws_iam_role" "EKS-role-ohio-cluster" { 
+resource "aws_iam_role" "demo-cluster" {
   name = "terraform-eks-demo-cluster"
 
   assume_role_policy = <<POLICY
@@ -25,8 +24,7 @@ resource "aws_iam_role" "EKS-role-ohio-cluster" {
 POLICY
 }
 
-# resource "aws_iam_role_policy_attachment" "demo-cluster-AmazonEKSClusterPolicy" {
-resource "aws_iam_role_policy_attachment" "AmazonEKSClusterPolicy" {
+resource "aws_iam_role_policy_attachment" "demo-cluster-AmazonEKSClusterPolicy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
   role       = aws_iam_role.demo-cluster.name
 }
