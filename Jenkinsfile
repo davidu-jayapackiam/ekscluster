@@ -84,6 +84,7 @@ pipeline {
         }
       }
     }
+/*
     stage('TF Destroy') {
       when {
         expression { params.action == 'destroy' }
@@ -100,7 +101,7 @@ pipeline {
 				}
 			}
         }
-      }
+      }*/
     }
   }
 }
