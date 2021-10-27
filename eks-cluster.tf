@@ -36,7 +36,8 @@ resource "aws_iam_role_policy_attachment" "demo-cluster-AmazonEKSServicePolicy" 
 }
 
 resource "aws_security_group" "demo-cluster" {
-  name        = "terraform-eks-demo-cluster"
+  # name        = "terraform-eks-demo-cluster"
+  name        = "EKS-role-ohio-cluster"
   description = "Cluster communication with worker nodes"
   vpc_id      = aws_vpc.demo.id
 
