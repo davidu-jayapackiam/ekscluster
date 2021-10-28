@@ -38,8 +38,10 @@ pipeline {
 			script {
 			dir('.') {
 			 //	withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'AWS_Credentials', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
-					withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'cred-dev-ecr-jenkins-eks-new', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
-			         //       withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'cred-dev-ecr-jenkins-eks-new', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) { 
+					# withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'genawsid', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+		                          withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'cred-dev-ecr-jenkins-eks-new', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+		
+						//       withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'cred-dev-ecr-jenkins-eks-new', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) { 
 	
 					sh """
 					#terraform init -reconfigure
@@ -66,8 +68,9 @@ pipeline {
 		steps {
 			script {
 			dir('.') {
-				withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'cred-dev-ecr-jenkins-eks-new', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
-				if (fileExists('$HOME/.kube')) {
+				# withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'cred-dev-ecr-jenkins-eks-new', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+				withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'genawsid', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+					if (fileExists('$HOME/.kube')) {
 					echo '.kube Directory Exists'
 				} else {
 				sh 'mkdir -p $HOME/.kube'
@@ -92,7 +95,8 @@ pipeline {
       steps {
         script {
 			dir('.') {
-				withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'cred-dev-ecr-jenkins-eks-new', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+				# withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'cred-dev-ecr-jenkins-eks-new', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+				withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'genawsid', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
 				sh """
 				terraform workspace select ${params.cluster}
             # terraform workspace select demo-aspire1
