@@ -76,8 +76,8 @@ pipeline {
 				sh 'mkdir -p $HOME/.kube'
 				}
 				sh """
-					# terraform apply -input=false -auto-approve ${plan}
-					# terraform output kubeconfig > $HOME/.kube/config
+					 terraform apply -input=false -auto-approve ${plan}
+					 terraform output kubeconfig > $HOME/.kube/config
 				"""
 				sh 'sudo chown $(id -u):$(id -g) $HOME/.kube/config'
 				sleep 30
