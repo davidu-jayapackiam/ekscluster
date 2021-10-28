@@ -46,8 +46,8 @@ pipeline {
 					sh """
 					#terraform init -reconfigure
 					 terraform init
-				 terraform workspace new ${params.cluster} || true
-                #terraform workspace new demo-aspire3
+				# terraform workspace new ${params.cluster} || true
+                terraform workspace new demo-aspire10
 					terraform workspace select ${params.cluster}
                 #terraform workspace select demo-aspire3
 					terraform plan \
