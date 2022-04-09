@@ -20,8 +20,8 @@ data "aws_availability_zones" "available" {}
 provider "http" {}
 /*
 provider "aws" {
-    access_key = "AKIA545UBMJ7LDZLNEO4"
-    secret_key = "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"
-    region = "us-east-2"
+    access_key = "xxxx"
+    secret_key = "xxx"
+    region = "xx-xxxx-x"
 }
 */
